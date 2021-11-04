@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, ScrollView, ScrollViewBase, StyleSheet, Text, TextInput, View } from 'react-native';
+import Hello from './components/Hello';
+
 
 export default function App() {
+  const [count,change] = useState(0)
   return (
     <View style={styles.container}>
-      <Text>KONNITIHA</Text>
+      <Hello bang={true}>World</Hello>
+      <Hello bang={true} style={{fontSize:16}}>SmallWorld</Hello>
+      <Text>こんにちは</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -14,7 +19,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#444444',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
