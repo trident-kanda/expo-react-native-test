@@ -2,10 +2,11 @@ import React, { Children } from "react";
 import { Text, StyleSheet, View } from "react-native";
 type Props = {
   children?: React.ReactNode;
+  style?: object;
 };
-const CircleButton = ({ children }: Props) => {
+const CircleButton = ({ children, style }: Props) => {
   return (
-    <View style={styles.circleButton}>
+    <View style={[styles.circleButton, style]}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
     </View>
   );

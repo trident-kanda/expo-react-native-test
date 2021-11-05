@@ -1,24 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Appbar from "./components/Appbar";
-import CircleButton from "./components/CircleButton";
-import MemoListItem from "./components/MemoListItem";
+import MemoDetailScreen from "./components/screens/MemoDetailScreen";
+import MemoListScreen from "./components/screens/MemoListScreen";
 
 export default function App() {
   const [count, change] = useState(0);
-  return (
-    <View style={styles.container}>
-      <Appbar />
-      <MemoListItem />
-      <MemoListItem />
-      <CircleButton>+</CircleButton>
-    </View>
-  );
+  return <MemoDetailScreen />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f0f4f8",
-  },
-});
