@@ -1,3 +1,7 @@
 # expo-react-native-test
 
-ReactNative + expoのテストです
+ReactNative + expo のテストです
+
+## 環境構築手順
+
+expo init
