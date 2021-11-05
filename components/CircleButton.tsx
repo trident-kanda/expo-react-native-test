@@ -1,13 +1,19 @@
-import React from "react";
+import React, { Children } from "react";
 import { Text, StyleSheet, View } from "react-native";
-const CircleButton = () => {
+type Props = {
+  children?: React.ReactNode;
+};
+const CircleButton = ({ children }: Props) => {
   return (
     <View style={styles.circleButton}>
-      <Text style={styles.circleButtonLabel}>+</Text>
+      <Text style={styles.circleButtonLabel}>{children}</Text>
     </View>
   );
 };
 
+CircleButton.defaultProps = {
+  children: "+",
+};
 const styles = StyleSheet.create({
   circleButton: {
     backgroundColor: "#467FD3",
