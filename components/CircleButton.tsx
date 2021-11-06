@@ -31,10 +31,5 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 8,
   },
-  circleButtonLabel: {
-    color: "#ffffff",
-    fontSize: 40,
-    lineHeight: 40,
-  },
 });
 export default CircleButton;
