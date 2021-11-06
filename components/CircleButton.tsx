@@ -1,20 +1,19 @@
-import React, { Children } from "react";
+import { Feather } from "@expo/vector-icons";
+import React, { Children, ComponentProps } from "react";
 import { Text, StyleSheet, View } from "react-native";
 type Props = {
-  children?: React.ReactNode;
   style?: object;
+  name: ComponentProps<typeof Feather>["name"];
 };
-const CircleButton = ({ children, style }: Props) => {
+
+const CircleButton = ({ style, name }: Props) => {
   return (
     <View style={[styles.circleButton, style]}>
-      <Text style={styles.circleButtonLabel}>{children}</Text>
+      <Feather name={name} size={32} color={"white"} />
     </View>
   );
 };
 
-CircleButton.defaultProps = {
-  children: "+",
-};
 const styles = StyleSheet.create({
   circleButton: {
     backgroundColor: "#467FD3",

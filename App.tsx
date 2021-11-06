@@ -4,5 +4,5 @@ import MemoListScreen from "./components/screens/MemoListScreen";
 
 export default function App() {
   const [count, change] = useState(0);
-  return <MemoDetailScreen />;
+  return <MemoListScreen />;
 }

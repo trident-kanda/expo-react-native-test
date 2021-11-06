@@ -17,7 +17,7 @@ const MemoDetailScreen = () => {
           本文用なので使い方を間違えると不自然に見えることもあるので
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 150, bottom: "auto" }}>+</CircleButton>
+      <CircleButton style={{ top: 150, bottom: "auto" }} name={"edit-2"} />
     </View>
   );
 };
