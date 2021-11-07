@@ -1,19 +1,32 @@
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const MemoListItem = () => {
+  const navigation: NativeStackNavigationProp<any> = useNavigation();
   return (
     <View>
-      <View style={styles.memoListItem}>
+      <TouchableOpacity
+        style={styles.memoListItem}
+        onPress={() => {
+          navigation.navigate("MemoCreate");
+        }}
+      >
         <View>
           <Text style={styles.memoListItemTitle}>買い物リスト</Text>
           <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          style={styles.memoDelte}
+          onPress={() => {
+            alert("delete");
+          }}
+        >
           <Feather name="x" size={16} color="#b0b0b0" />
         </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -37,6 +50,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: "#848484",
+  },
+  memoDelte: {
+    padding: 8,
   },
 });
 export default MemoListItem;

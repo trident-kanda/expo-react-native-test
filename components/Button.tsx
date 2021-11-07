@@ -5,11 +5,11 @@ import {
   GestureResponderEvent,
   TouchableOpacity,
 } from "react-native";
-type props = {
+type Props = {
   label: string;
   onPress?: (event: GestureResponderEvent) => void;
 };
-const Button = ({ label, onPress }: props) => {
+const Button = ({ label, onPress }: Props) => {
   return (
     <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
       <Text style={styles.buttonLabel}>{label}</Text>

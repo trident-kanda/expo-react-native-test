@@ -1,3 +1,4 @@
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import {
   View,
@@ -6,20 +7,36 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import Appbar from "../Appbar";
 import Button from "../Button";
-const LogInScreen = () => {
+type Props = {
+  navigation: NativeStackNavigationProp<any>;
+};
+const LogInScreen = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
-      <Appbar />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput value="Email Address" style={styles.input} />
         <TextInput value="Password" style={styles.input} />
-        <Button label="Submit" onPress={() => {}} />
+        <Button
+          label="Submit"
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "MemoList" }],
+            });
+          }}
+        />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "SignUp" }],
+              });
+            }}
+          >
             <Text style={styles.fotterLink}>Sign up here!</Text>
           </TouchableOpacity>
         </View>

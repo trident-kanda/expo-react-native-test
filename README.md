@@ -13,3 +13,4 @@ expo init
 - react-native
 - expo/vector-icons
   - https://icons.expo.fyi/
+- React-Navigation

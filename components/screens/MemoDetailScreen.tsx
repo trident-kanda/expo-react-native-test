@@ -1,12 +1,14 @@
+import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import Appbar from "../Appbar";
 import CircleButton from "../CircleButton";
 
-const MemoDetailScreen = () => {
+type Props = {
+  navigation: NativeStackNavigationProp<any>;
+};
+const MemoDetailScreen = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
-      <Appbar />
       <View style={styles.memoheader}>
         <Text style={styles.memoTitle}>買い物リスト</Text>
         <Text style={styles.memoDate}>2020年12月24日 10:00</Text>
@@ -17,7 +19,13 @@ const MemoDetailScreen = () => {
           本文用なので使い方を間違えると不自然に見えることもあるので
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 150, bottom: "auto" }} name={"edit-2"} />
+      <CircleButton
+        style={{ top: 60, bottom: "auto" }}
+        name={"edit-2"}
+        onPress={() => {
+          navigation.navigate("MemoEdit");
+        }}
+      />
     </View>
   );
 };
