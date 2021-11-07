@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import Appbar from "../Appbar";
 import Button from "../Button";
 const SignUpScreen = () => {
@@ -13,7 +19,9 @@ const SignUpScreen = () => {
         <Button label="Submit" />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Text style={styles.fotterLink}>Log In</Text>
+          <TouchableOpacity>
+            <Text style={styles.fotterLink}>Log In</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

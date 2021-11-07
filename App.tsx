@@ -7,5 +7,5 @@ import MemoListScreen from "./components/screens/MemoListScreen";
 import SignUpScreen from "./components/screens/SignUpScreen";
 
 export default function App() {
-  return <SignUpScreen />;
+  return <MemoListScreen />;
 }

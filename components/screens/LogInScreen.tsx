@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import Appbar from "../Appbar";
 import Button from "../Button";
 const LogInScreen = () => {
@@ -10,10 +16,12 @@ const LogInScreen = () => {
         <Text style={styles.title}>Log In</Text>
         <TextInput value="Email Address" style={styles.input} />
         <TextInput value="Password" style={styles.input} />
-        <Button label="Submit" />
+        <Button label="Submit" onPress={() => {}} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
-          <Text style={styles.fotterLink}>Sign up here!</Text>
+          <TouchableOpacity>
+            <Text style={styles.fotterLink}>Sign up here!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

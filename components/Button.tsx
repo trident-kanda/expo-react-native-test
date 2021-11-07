@@ -1,13 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  GestureResponderEvent,
+  TouchableOpacity,
+} from "react-native";
 type props = {
   label: string;
+  onPress?: (event: GestureResponderEvent) => void;
 };
-const Button = ({ label }: props) => {
+const Button = ({ label, onPress }: props) => {
   return (
-    <View style={styles.buttonContainer}>
+    <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
       <Text style={styles.buttonLabel}>{label}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
