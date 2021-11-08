@@ -1,11 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const MemoListItem = () => {
-  const navigation: NativeStackNavigationProp<any> = useNavigation();
+  const navigation: StackNavigationProp<any> = useNavigation();
   return (
     <View>
       <TouchableOpacity

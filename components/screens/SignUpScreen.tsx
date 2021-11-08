@@ -1,4 +1,4 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import {
   View,
@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Button from "../Button";
 type Props = {
-  navigation: NativeStackNavigationProp<any>;
+  navigation: StackNavigationProp<any>;
 };
 const SignUpScreen = ({ navigation }: Props) => {
   return (

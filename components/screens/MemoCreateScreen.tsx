@@ -1,4 +1,4 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import {
   StyleSheet,
@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import CircleButton from "../CircleButton";
 type Props = {
-  navigation: NativeStackNavigationProp<any>;
+  navigation: StackNavigationProp<any>;
 };
 const MemoCreateScreen = ({ navigation }: Props) => {
   return (
