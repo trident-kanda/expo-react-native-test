@@ -10,10 +10,10 @@ import MemoDetailScreen from "./components/screens/MemoDetailScreen";
 import MemoEditScreen from "./components/screens/MemoEditScreen";
 import MemoListScreen from "./components/screens/MemoListScreen";
 import SignUpScreen from "./components/screens/SignUpScreen";
-
+import { TEST } from "@env";
 export default function App() {
   const Stack = createStackNavigator();
-
+  console.log(TEST);
   return (
     <NavigationContainer>
       <Stack.Navigator
