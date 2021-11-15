@@ -1,3 +1,4 @@
+import { signInWithEmailAndPassword } from "@firebase/auth";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState } from "react";
 import {
@@ -6,7 +7,9 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from "react-native";
+import { auth } from "../../firebase/firebase";
 import Button from "../Button";
 type Props = {
   navigation: StackNavigationProp<any>;
@@ -14,6 +17,22 @@ type Props = {
 const LogInScreen = ({ navigation }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handlePress = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user.uid);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "MemoList" }],
+        });
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+        Alert.alert(error.code);
+      });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -40,15 +59,7 @@ const LogInScreen = ({ navigation }: Props) => {
           secureTextEntry
           textContentType="password"
         />
-        <Button
-          label="Submit"
-          onPress={() => {
-            navigation.reset({
-              index: 0,
-              routes: [{ name: "MemoList" }],
-            });
-          }}
-        />
+        <Button label="Submit" onPress={handlePress} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
           <TouchableOpacity
