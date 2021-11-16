@@ -1,6 +1,6 @@
-import { signInWithEmailAndPassword } from "@firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "@firebase/auth";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -17,7 +17,16 @@ type Props = {
 const LogInScreen = ({ navigation }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "MemoList" }],
+        });
+      }
+    });
+  }, []);
   const handlePress = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
