@@ -1,13 +1,21 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import CircleButton from "../CircleButton";
+import LogOutButton from "../LogOutButton";
 import MemoListItem from "../MemoListItem";
 
 type Props = {
   navigation: StackNavigationProp<any>;
 };
 const MemoListScreen = ({ navigation }: Props) => {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <LogOutButton />;
+      },
+    });
+  }, []);
   return (
     <View style={styles.container}>
       <MemoListItem />
