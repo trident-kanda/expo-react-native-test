@@ -1,5 +1,5 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -7,21 +7,42 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import CircleButton from "../CircleButton";
+import { auth, db } from "../../firebase/firebase";
+import { setDoc, collection, doc } from "@firebase/firestore";
 type Props = {
   navigation: StackNavigationProp<any>;
 };
 const MemoCreateScreen = ({ navigation }: Props) => {
+  const [bodyText, setBodyText] = useState("");
+  const handlePress = async () => {
+    const currentUser = auth.currentUser;
+    const docRef = doc(collection(db, "users", `${currentUser?.uid}`, "memos"));
+    await setDoc(docRef, {
+      bodyText,
+      updatedAt: new Date(),
+    })
+      .then((docRef) => {
+        console.log("成功");
+        navigation.goBack();
+      })
+      .catch((error) => {
+        console.log("Error!", error);
+      });
+  };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height">
       <View style={styles.inputContainer}>
-        <TextInput value="" multiline style={styles.input} />
+        <TextInput
+          value={bodyText}
+          multiline
+          style={styles.input}
+          onChangeText={(text) => {
+            setBodyText(text);
+          }}
+          autoFocus
+        />
       </View>
-      <CircleButton
-        name="check"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      <CircleButton name="check" onPress={handlePress} />
     </KeyboardAvoidingView>
   );
 };

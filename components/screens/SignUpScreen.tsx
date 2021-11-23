@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import Button from "../Button";
 type Props = {
   navigation: StackNavigationProp<any>;
