@@ -22,7 +22,6 @@ const SignUpScreen = ({ navigation }: Props) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user.uid);
         navigation.reset({
           index: 0,
           routes: [{ name: "MemoList" }],
