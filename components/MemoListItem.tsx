@@ -11,7 +11,7 @@ const MemoListItem = () => {
       <TouchableOpacity
         style={styles.memoListItem}
         onPress={() => {
-          navigation.navigate("MemoCreate");
+          navigation.navigate("MemoEdit");
         }}
       >
         <View>
