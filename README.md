@@ -14,3 +14,4 @@ expo init
 - expo/vector-icons
   - https://icons.expo.fyi/
 - React-Navigation
+- firebase
