@@ -7,7 +7,7 @@ import {
   query,
 } from "@firebase/firestore";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { auth, db } from "../../firebase/firebase";
 import CircleButton from "../CircleButton";
@@ -17,7 +17,13 @@ import MemoListItem from "../MemoListItem";
 type Props = {
   navigation: StackNavigationProp<any>;
 };
+type memos = {
+  id: string;
+  bodyText: string;
+  updatedAt: Date;
+}[];
 const MemoListScreen = ({ navigation }: Props) => {
+  const [memos, setMemos] = useState<[] | memos>([]);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => {
@@ -36,9 +42,17 @@ const MemoListScreen = ({ navigation }: Props) => {
       unsubscribe = onSnapshot(
         ref,
         (snap) => {
+          const userMemos: memos = [];
           snap.forEach((item) => {
             console.log(item.data());
+            const data = item.data();
+            userMemos.push({
+              id: item.id,
+              bodyText: data.bodyText,
+              updatedAt: data.updatedAt.toDate(),
+            });
           });
+          setMemos(userMemos);
         },
         (error) => {
           console.log(error);
@@ -50,9 +64,7 @@ const MemoListScreen = ({ navigation }: Props) => {
   }, []);
   return (
     <View style={styles.container}>
-      <MemoListItem />
-      <MemoListItem />
-      <MemoListItem />
+      <MemoListItem memos={memos} />
       <CircleButton
         name="plus"
         onPress={() => {

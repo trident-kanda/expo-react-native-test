@@ -3,30 +3,44 @@ import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-
-const MemoListItem = () => {
+type props = {
+  memos: {
+    id: string;
+    bodyText: string;
+    updatedAt: Date;
+  }[];
+};
+const MemoListItem = ({ memos }: props) => {
   const navigation: StackNavigationProp<any> = useNavigation();
+
   return (
     <View>
-      <TouchableOpacity
-        style={styles.memoListItem}
-        onPress={() => {
-          navigation.navigate("MemoEdit");
-        }}
-      >
-        <View>
-          <Text style={styles.memoListItemTitle}>買い物リスト</Text>
-          <Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.memoDelte}
-          onPress={() => {
-            alert("delete");
-          }}
-        >
-          <Feather name="x" size={16} color="#b0b0b0" />
-        </TouchableOpacity>
-      </TouchableOpacity>
+      {memos.map((memo) => {
+        return (
+          <TouchableOpacity
+            key={memo.id}
+            style={styles.memoListItem}
+            onPress={() => {
+              navigation.navigate("MemoEdit");
+            }}
+          >
+            <View>
+              <Text style={styles.memoListItemTitle}>{memo.bodyText}</Text>
+              <Text style={styles.memoListItemDate}>
+                {String(memo.updatedAt)}
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={styles.memoDelte}
+              onPress={() => {
+                alert("delete");
+              }}
+            >
+              <Feather name="x" size={16} color="#b0b0b0" />
+            </TouchableOpacity>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
